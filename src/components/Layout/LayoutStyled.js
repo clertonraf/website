@@ -8,7 +8,7 @@ const LayoutStyled = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  height: ${window.innerHeight}px;
+  height: ${props => props.height}px;
 `
 
 export default LayoutStyled

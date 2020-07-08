@@ -16,11 +16,12 @@ const Layout = ({ children }) => {
     color: BLACK_COLOR,
     backgroundColor: WHITE_COLOR,
   };
+  const height = window.innerHeight
   return (
     <ThemeProvider theme={theme}>
       <SEO title="Clerton's Web Site"/>
       <GlobalFonts />
-      <LayoutStyled>
+      <LayoutStyled height={height}>
         <Switch isChecked={isDarkMode} onChange={() => setDarkMode(!isDarkMode)}/>
         <main>{children}</main>
         <Footer />
