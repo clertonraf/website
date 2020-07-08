@@ -8,7 +8,7 @@ const LayoutStyled = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
+  height: ${window.innerHeight}px;
 `
 
 export default LayoutStyled

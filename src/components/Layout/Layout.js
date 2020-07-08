@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { BLACK_COLOR, WHITE_COLOR } from "../../constants"
 import Switch from "../Toggle"
 import SEO from "../seo"
+import Footer from "../Footer"
 import GlobalFonts from '../../fonts'
 import LayoutStyled from "./LayoutStyled"
 
@@ -22,13 +23,7 @@ const Layout = ({ children }) => {
       <LayoutStyled>
         <Switch isChecked={isDarkMode} onChange={() => setDarkMode(!isDarkMode)}/>
         <main>{children}</main>
-        <footer>
-        © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-            {` and `}
-            <a target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a>
-        </footer>
+        <Footer />
       </LayoutStyled>
     </ThemeProvider>
   )
