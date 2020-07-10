@@ -1,33 +1,22 @@
 import React from "react"
-import { ThemeProvider } from 'styled-components';
-import { BLACK_COLOR, WHITE_COLOR } from "../../constants"
-import Switch from "../Toggle"
+import { useDarkMode } from "../DarkMode"
 import SEO from "../seo"
+import Head from "../Head"
 import Footer from "../Footer"
-import GlobalFonts from '../../fonts'
-import LayoutStyled from "./LayoutStyled"
 
 const Layout = ({ children }) => {
-  const [isDarkMode, setDarkMode] = React.useState(global?.localStorage?.getItem('theme') === 'darkMode')
-  const theme = isDarkMode ? {
-    color: WHITE_COLOR,
-    backgroundColor: BLACK_COLOR,
-  } : {
-    color: BLACK_COLOR,
-    backgroundColor: WHITE_COLOR,
-  };
-  const height = window.innerHeight
-  return (
-    <ThemeProvider theme={theme}>
+  const [isDarkMode] = useDarkMode()
+  return <div className={isDarkMode
+      ? "flex dark:bg-black h-screen flex-col"
+      : "flex light:bg-white h-screen flex-col"}
+    >
       <SEO title="Clerton's Web Site"/>
-      <GlobalFonts />
-      <LayoutStyled height={height}>
-        <Switch isChecked={isDarkMode} onChange={() => setDarkMode(!isDarkMode)}/>
-        <main>{children}</main>
-        <Footer />
-      </LayoutStyled>
-    </ThemeProvider>
-  )
+      <Head className="flex flex-row items-center justify-between" />
+      <main className="flex flex-grow justify-center items-center">
+        {children}
+      </main>
+      <Footer />
+  </div>
 }
 
 export default Layout

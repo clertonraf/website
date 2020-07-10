@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Clerton Ribeiro`,
+    title: `Clerton Araujo`,
     description: `Personal website`,
     author: `@clertonraf`,
   },
@@ -13,10 +13,24 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`, `pt-BR`, `de`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/en` when connecting `/`
+        redirect: true,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     'gatsby-plugin-antd',
     `gatsby-plugin-offline`,
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

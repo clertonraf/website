@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
+import { useDarkMode } from "../DarkMode"
 import { useStaticQuery, graphql } from "gatsby"
-import Style from './HomeStyled'
 
 const Home = () => {
   const data = useStaticQuery(graphql`
@@ -12,7 +12,15 @@ const Home = () => {
       }
     }
   `)
-  return <Style>{data?.site?.siteMetadata?.title}</Style>
+  const [isDarkMode] = useDarkMode()
+  return <span
+    className={isDarkMode
+      ? "font-cursive text-5xl md:text-9xl dark:text-white pb-24"
+      : "font-cursive text-5xl md:text-9xl light:text-white pb-24"  
+    }
+  >
+    {data?.site?.siteMetadata?.title}
+  </span>
 }
 
 export default Home
